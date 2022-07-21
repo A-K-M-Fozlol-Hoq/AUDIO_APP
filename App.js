@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -23,6 +23,9 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
+          {/* <SafeAreaView style={{ flex: 1 }}>
+            <Navigation></Navigation>
+          </SafeAreaView> */}
           <Navigation></Navigation>
           <StatusBar />
           <FlashMessage position="top" floating statusBarHeight={30} />
