@@ -6,7 +6,9 @@ import store from './store';
 // import { PersistGate } from 'redux-persist/integration/react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FlashMessage from 'react-native-flash-message';
-import Text from './components/text/text';
+import Text from './src/components/text/text';
+import Navigation from './navigation';
+// import Text from './components/text/text';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,9 +23,8 @@ export default function App() {
     return (
       <Provider store={store}>
         <SafeAreaProvider>
-          <Text preset="h1" style={{ marginTop: 80 }}>
-            Welcome
-          </Text>
+          <Navigation></Navigation>
+          <StatusBar />
           <FlashMessage position="top" floating statusBarHeight={30} />
         </SafeAreaProvider>
       </Provider>
