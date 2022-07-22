@@ -6,6 +6,7 @@ import { fetchProducts, selectFeaturedProducts, selectStatus } from '../../store
 import BannerTitle from '../components/banner-title';
 import { colors, spacing } from '../theme';
 import { AntDesign } from '@expo/vector-icons';
+import Button from '../components/button';
 
 const CategoryBox =({title, image, onPress}) =>{
   return (
@@ -30,12 +31,26 @@ const CategoryBox =({title, image, onPress}) =>{
 
 const FeaturedProduct = ({ name, category, image}) =>{
   const windowWidth = useWindowDimensions().width
+  console.log(image,'img')
   return(
-    <View></View>
+    <View style={{marginVertical:spacing[5], borderRadius:spacing[4], backgroundColor:colors.primary, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{height: 320, width: windowWidth-40, borderRadius:400,borderWidth:1 ,borderColor:'#d8d8d8',justifyContent: 'center', alignItems:'center'}}>
+        <View style={{height: 280, width: windowWidth-80, borderRadius:400,borderWidth:1 ,borderColor:'#d8d8d8',justifyContent: 'center', alignItems:'center'}}>
+          <Image style={{height:172, width:180}} resizeMode="contain" source={image.source} />
+        </View>
+      </View>
+      <View style={{paddingBottom:spacing[8], marginTop:-spacing[7]}}>
+        <Text preset='h3' centered uppercase white >{name}</Text>
+        <Text preset='h3' centered uppercase white >{category}</Text>
+        <Text centered white style={{width:250, marginTop:spacing[4]}}>Upgrade to premium speakers that are phonemenally built to deliver truly remarkable sound.</Text>
+      </View>
+      <Button title={'SEE PRODUCT'} style={{alignSelf: 'center', backgroundColor:colors.black, marginTop:spacing[5], marginBottom:spacing[5]}} />
+    </View>
   )
 }
 
-export default function Home() {
+
+export default function Home({navigation}) {
   const dispatch = useDispatch();
   const status = useSelector(selectStatus)
   const featuredProducts = useSelector(selectFeaturedProducts)
@@ -79,9 +94,19 @@ export default function Home() {
         </View>
 
         <View style={{paddingVertical:spacing[8]}}>
-          <CategoryBox title="HEADPHONES" image={require("../../assets/images/home-headphone.png")} />
-          <CategoryBox title="SPEAKER" image={require("../../assets/images/home-speaker.png")} />
-          <CategoryBox title="EARPHONES" image={require("../../assets/images/home-earphone.png")} />
+          <CategoryBox title="HEADPHONES" image={require("../../assets/images/home-headphone.png")} onPress={()=>{navigation.navigate("HeadPhonesTab") }} />
+          <CategoryBox title="SPEAKER" image={require("../../assets/images/home-speaker.png")} onPress={()=>{navigation.navigate("SpeakersTab")}}/>
+          <CategoryBox title="EARPHONES" image={require("../../assets/images/home-earphone.png")} onPress={()=>{navigation.navigate("EarPhonesTab")}}/>
+        </View>
+
+        <View style={{paddingVertical:spacing[8], paddingHorizontal:spacing[4]}}>
+          {
+            featuredProducts.map((product)=>{
+              return(
+                <FeaturedProduct key={product.id} name={product.name} category={product.category} image={product.featuredImage} />
+              )
+            })  
+          }
         </View>
       </SafeAreaView>
     </ScrollView>

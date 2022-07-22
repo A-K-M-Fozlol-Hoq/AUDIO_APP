@@ -30,7 +30,7 @@ export const productsSlice = createSlice({
       const { payload } = action;
       payload.products.forEach((product) => {
         product.featuredImage = PRODUCT_IMAGE_MAP[product.name].featuredImage;
-        product.featuredImage = PRODUCT_IMAGE_MAP[product.name].images;
+        product.images = PRODUCT_IMAGE_MAP[product.name].images;
       });
       state.products = payload.products;
       console.log('ApI response ->', payload);
