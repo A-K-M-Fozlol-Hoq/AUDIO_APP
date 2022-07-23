@@ -7,6 +7,7 @@ import BannerTitle from '../components/banner-title'
 import CategoryTitle from '../components/category-title'
 import { colors, spacing } from '../theme'
 import Button from '../components/button'
+import Footer from '../components/footer'
 
 export default function HeadPhones({navigation}) {
   const headphones = useSelector(selectHeadphones)
@@ -64,6 +65,7 @@ export default function HeadPhones({navigation}) {
               )
             })
           }
+          <Footer></Footer>
         </View>
       </SafeAreaView>
     </ScrollView>
