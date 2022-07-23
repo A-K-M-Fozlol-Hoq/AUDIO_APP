@@ -33,7 +33,7 @@ export const productsSlice = createSlice({
         product.images = PRODUCT_IMAGE_MAP[product.name].images;
       });
       state.products = payload.products;
-      console.log('ApI response ->', payload);
+      // console.log('ApI response ->', payload);
     },
     [fetchProducts.rejected]: (state, action) => {
       state.status = 'failed';
@@ -44,5 +44,11 @@ export const productsSlice = createSlice({
 export const selectStatus = (state) => state.products.status;
 export const selectFeaturedProducts = (state) =>
   state.products.products.filter((item) => item.is_featured);
+export const selectHeadphones = (state) =>
+  state.products.products.filter((item) => item.category === 'headphones');
+export const selectEarphones = (state) =>
+  state.products.products.filter((item) => item.category === 'earphones');
+export const selectSpeakers = (state) =>
+  state.products.products.filter((item) => item.category === 'speakers');
 
 export default productsSlice.reducer;

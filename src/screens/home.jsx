@@ -31,7 +31,7 @@ const CategoryBox =({title, image, onPress}) =>{
 
 const FeaturedProduct = ({ name, category, image}) =>{
   const windowWidth = useWindowDimensions().width
-  console.log(image,'img')
+  // console.log(image,'img') 
   return(
     <View style={{marginVertical:spacing[5], borderRadius:spacing[4], backgroundColor:colors.primary, alignItems: 'center', justifyContent: 'center'}}>
       <View style={{height: 320, width: windowWidth-40, borderRadius:400,borderWidth:1 ,borderColor:'#d8d8d8',justifyContent: 'center', alignItems:'center'}}>
@@ -54,8 +54,8 @@ export default function Home({navigation}) {
   const dispatch = useDispatch();
   const status = useSelector(selectStatus)
   const featuredProducts = useSelector(selectFeaturedProducts)
-  console.log('status -->', status); 
-  console.log('featuredProducts -->', featuredProducts); 
+  // console.log('status -->', status); 
+  // console.log('featuredProducts -->', featuredProducts); 
   const {width, height} = useWindowDimensions()
 
   useEffect(()=>{
