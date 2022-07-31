@@ -3,10 +3,10 @@ import React, { useEffect } from 'react'
 import Text from '../components/text/text'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts, selectFeaturedProducts, selectStatus } from '../../store/productSlice';
-import BannerTitle from '../components/banner-title';
 import { colors, spacing } from '../theme';
 import { AntDesign } from '@expo/vector-icons';
 import Button from '../components/button';
+import BannerTitle from '../components/banner-title';
 
 const CategoryBox =({title, image, onPress}) =>{
   return (

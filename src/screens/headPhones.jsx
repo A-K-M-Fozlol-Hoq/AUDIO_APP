@@ -11,7 +11,12 @@ import Footer from '../components/footer'
 
 export default function HeadPhones({navigation}) {
   const headphones = useSelector(selectHeadphones)
-  
+  // console.log(headphones)
+//  const onPressProduct = (id) => {
+//   navigation.navigate("Details", {
+//     id:id,
+//   })
+//  }
   return (
     <ScrollView>
       <SafeAreaView>
