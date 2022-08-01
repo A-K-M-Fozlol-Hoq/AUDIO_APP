@@ -53,7 +53,7 @@ export default function ProductDetailsScreen({navigation, route}) {
         dispatch(addToCart({cartProduct}))
         showMessage({
             message: "Item is added to cart successfully",
-            type: "warning",
+            type: "success",
         })
     }
 
