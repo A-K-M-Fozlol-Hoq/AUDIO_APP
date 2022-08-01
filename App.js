@@ -9,6 +9,10 @@ import FlashMessage from 'react-native-flash-message';
 import Text from './src/components/text/text';
 import Navigation from './navigation';
 // import Text from './components/text/text';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
+let persistor = persistStore(store);
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,14 +26,16 @@ export default function App() {
   } else {
     return (
       <Provider store={store}>
-        <SafeAreaProvider>
-          {/* <SafeAreaView style={{ flex: 1 }}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaProvider>
+            {/* <SafeAreaView style={{ flex: 1 }}>
             <Navigation></Navigation>
           </SafeAreaView> */}
-          <Navigation></Navigation>
-          <StatusBar />
-          <FlashMessage position="top" floating statusBarHeight={30} />
-        </SafeAreaProvider>
+            <Navigation></Navigation>
+            <StatusBar />
+            <FlashMessage position="top" floating statusBarHeight={30} />
+          </SafeAreaProvider>
+        </PersistGate>
       </Provider>
     );
   }
