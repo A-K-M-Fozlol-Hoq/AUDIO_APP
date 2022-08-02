@@ -14,6 +14,8 @@ import {
   MaterialCommunityIcons,
   SimpleLineIcons,
 } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
+import { selectCartLength } from '../store/cartSlice';
 
 const THEME = {
   ...DefaultTheme,
@@ -121,6 +123,7 @@ function TabBarIcon({ fontFamily, name, color }) {
 }
 
 export default function Navigation() {
+  const cartLength = useSelector(selectCartLength);
   return (
     <NavigationContainer theme={THEME}>
       <Tab.Navigator
@@ -198,6 +201,7 @@ export default function Navigation() {
                 color={color}
               />
             ),
+            tabBarBadge: cartLength > 0 ? cartLength : null,
           }}
           name="CartTab"
           component={CartStackScreens}
